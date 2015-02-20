@@ -1,0 +1,8 @@
+{
+  "name": "ls_seed",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "express": "^4.11.1"
+  }
+}
