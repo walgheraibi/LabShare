@@ -1,0 +1,14 @@
+{
+  "name": "boiler",
+  "homepage": "https://github.com/Xaxis/boiler",
+  "version": "0.9.0",
+  "_release": "0.9.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.0",
+    "commit": "dbedf98561c455fc082d7b860d4c52e2e3c05767"
+  },
+  "_source": "https://github.com/Xaxis/boiler.git",
+  "_target": "~0.9.0",
+  "_originalSource": "https://github.com/Xaxis/boiler.git"
+}

@@ -51,7 +51,8 @@ define([
       './Chart/ChartCtrl',
       './Chart/ChartDirective',
 
-      './HelloWorld/HelloWorldCtrl'
+      './HelloWorld/HelloWorldCtrl',
+    './StemCells/StemCellsCtrl'
 
     ], function (ng) {
       'use strict';
@@ -80,6 +81,7 @@ define([
           'app.chart.ctrls',
           'app.chart.directives',
           'app.helloworld.ctrls',
-          'app.constants'
+          'app.constants',
+          'app.StemCells.ctrls'
       ]);
 });
