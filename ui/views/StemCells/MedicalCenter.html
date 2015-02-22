@@ -3,7 +3,23 @@
     <section  data-ng-controller="StemCellsCtrl">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Register new patient </strong></div>
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Read text file </strong></div>
+
+                <div class="panel-body">
+                    <input type="file" on-read-file="showContent($fileContent)" />
+                    <div ng-if="content">
+                        <h2>File content is:</h2>
+                        <pre>{{ content }}</pre>
+                    </div>
+                </div>
+                </div>
+
+        <section  data-ng-controller="StemCellsCtrl">
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Patients </strong></div>
+
+
                 <div class="panel-body">
                     <div class="col-md-12">
         <form data-ng-submit="add()" class="add-task">
@@ -17,8 +33,8 @@
                    autofocus>
 
         </form>
-</div>
-</div>
+                    </div>
+                </div>
 
 
              <ul class="task-list list-unstyled">

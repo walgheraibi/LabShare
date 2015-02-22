@@ -1,6 +1,8 @@
 /**
  * Created by weaamalgheraibi on 2/20/15.
  */
+
+
 define(['angular'], function (angular) {
     'use strict';
     return angular.module('app.StemCells.ctrls', []).factory('taskStorage', function() {
@@ -31,19 +33,11 @@ define(['angular'], function (angular) {
         }
     ]).controller('StemCellsCtrl', [
         '$scope',  'taskStorage', 'filterFilter', '$rootScope', 'logger', function($scope, taskStorage, filterFilter, $rootScope, logge) {
-            $scope.easypiechart = {
-                percent: 65,
-                options: {
-                    animate: {
-                        duration: 1000,
-                        enabled: true
-                    },
-                    barColor: '#1C7EBB',
-                    lineCap: 'round',
-                    size: 180,
-                    lineWidth: 5
-                }
+
+            $scope.showContent = function($fileContent) {
+                $scope.content = $fileContent;
             }
+
                 var tasks;
                 tasks = $scope.tasks = taskStorage.get();
                 $scope.newTask = '';
@@ -141,7 +135,26 @@ define(['angular'], function (angular) {
                 return $scope.$watch('remainingCount', function(newVal, oldVal) {
                     return $rootScope.$broadcast('taskRemaining:changed', newVal);
                 });
-            }
-        ]);
+            }]).directive('onReadFile', function ($parse) {
+        return {
+            restrict: 'A',
+            scope: false,
+            link: function(scope, element, attrs) {
+                var fn = $parse(attrs.onReadFile);
 
+                element.on('change', function(onChangeEvent) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(onLoadEvent) {
+                        scope.$apply(function() {
+                            fn(scope, {$fileContent:onLoadEvent.target.result});
+                        });
+                    };
+
+                    reader.readAsText((onChangeEvent.srcElement || onChangeEvent.target).files[0]);
+                });
+            }
+        }
+
+});
 });
