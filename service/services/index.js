@@ -31,7 +31,7 @@ app.get('/users', function(request, response){
     var users = new userService();
     users.getUsers(request, response);
 });
-
+/*
 app.get('/user', function(request, response){
     var users = new userService();
     users.getUser(request, response);
@@ -46,7 +46,7 @@ app.delete('/user', function(request, response){
     var users = new userService();
     users.deleteUser(request, response)
 });
-
+*/
 var server = app.listen(9090, function() {
     var host = server.address().address;
     var port = server.address().port;
