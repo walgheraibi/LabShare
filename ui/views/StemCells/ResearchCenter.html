@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="page" data-ng-controller="stemCtrl">
 
-</body>
-</html>
+    <section class="panel panel-default">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Research Center </strong></div>
+
+            <div class="panel-body">
+                <p>{{ cells }}</p>
+                <div data-ng-controller="stemCtrlService"><p>{{message}}</p></div>
+            </div>
+
+    </section>
+</div>

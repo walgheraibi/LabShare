@@ -40,9 +40,12 @@ define([
 
       './HelloWorld/HelloWorldCtrl',
       './HelloWorld/HelloWorldService',
-      './xtkDemo/xtkDirective'
+      './xtkDemo/xtkDirective',
+    './StemCells/StemCellsCtrl',
+    './StemCells/StemCellsService'
 
-    ], function (ng) {
+
+], function (ng) {
       'use strict';
       return ng.module('lsseedApp', [
           'ngRoute',
@@ -70,7 +73,8 @@ define([
           'app.helloworld.services',
           'app.helloworld.ctrls',
           'app.xtk.directives',
-
+          'app.StemCells.services',
+          'app.StemCells.ctrls',
           'app.constants'
       ]);
 });

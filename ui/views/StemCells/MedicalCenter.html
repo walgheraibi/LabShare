@@ -3,7 +3,9 @@
     <section  data-ng-controller="StemCellsCtrl">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Read text file </strong></div>
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Register new patient </strong></div>
+
+
 
                 <div class="panel-body">
                     <input type="file" on-read-file="showContent($fileContent)" />
@@ -11,30 +13,28 @@
                         <h2>File content is:</h2>
                         <pre>{{ content }}</pre>
                     </div>
+
                 </div>
-                </div>
-
-        <section  data-ng-controller="StemCellsCtrl">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Patients </strong></div>
-
 
                 <div class="panel-body">
                     <div class="col-md-12">
-        <form data-ng-submit="add()" class="add-task">
+
+
+
+                        <form data-ng-submit="add()" class="add-task">
             <a type="submit" class="submit-button" data-ng-click="add()">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
             <input type="text"
-                   placeholder="What needs to be done?"
+                   placeholder="Add new patient"
                    class="form-control"
                    data-ng-model="newTask"
                    autofocus>
 
         </form>
                     </div>
-                </div>
+
+</div>
 
 
              <ul class="task-list list-unstyled">
