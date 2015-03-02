@@ -1,16 +1,45 @@
-var hello = require('../lib/HelloWorld');
+/*
+*  Router file which defines the methods for /HelloWorld
+*  This is file in which request validation would occur
+*     Then call the appropriate method for that request
+ */
 
-var HelloWorld = function HelloWorld() {
-    console.log("creating new helloworld service");
-    this.post = function (req, res) {
+var express = require('express');
+var router = express.Router();
+
+var helloworld = require('../lib/HelloWorld')(); 
+
+//The routes for our api
+//Use router.route to chain
+router.route('/HelloWorld')
+    .get(function(req, res) {
+        helloworld.hello(function(err, data) {
+            res.send(data);
+        })
+    })
+
+    .post( function(req, res) {
         console.log("handling post");
-        console.log("reg body: " + req.body);
         var name = req.body.name;
 
-        hello(name, function (err, data) {
+        //Validate request
+        if(!name) {
+            var error = new Error('Need to provide name');
+            res.status(400);
+            console.log(error);
+            return res.send({error: error.message});
+        }
+
+        helloworld.helloUser(name, function (err, data) {
             res.json(data);
         });
-    }
-};
+    });
 
-module.exports = HelloWorld;
+router.route('/HelloWorld/goodbye')
+    .get(function(req, res) {
+        helloworld.goodbye(function(err, data) {
+            res.send(data);
+        });
+    });
+
+module.exports = router;

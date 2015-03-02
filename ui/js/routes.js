@@ -75,12 +75,8 @@ define(['./app'], function (app) {
                 templateUrl: 'ui/views/tasks/tasks.html'
             }).when('/hello', {
                 templateUrl: 'ui/views/helloworld/helloworld.html'
-            }).when('/StemCells/MedicalCenter', {
-                templateUrl: 'ui/views/StemCells/MedicalCenter.html'
-            }).when('/StemCells/ResearchCenter', {
-                templateUrl: 'ui/views/StemCells/ResearchCenter.html'
-            }).when('/StemCells/OCSPT', {
-                templateUrl: 'ui/views/StemCells/OCSPT.html'
+            }).when('/xtk', {
+                templateUrl: 'ui/views/xtk/xtk.html'
             }).otherwise({
                 redirectTo: '/404'
             });

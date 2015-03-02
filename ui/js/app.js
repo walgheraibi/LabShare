@@ -4,30 +4,17 @@
  */
 define([
       'angular',
-      'jquery',
       'angular-route',
       'angular-bootstrap',
       'angular-animate',
       'angular-loading-bar',
       'angular.easy-pie-chart',
       'angular-wizard',
-      'flot.time',
-      'flot.resize',
-      'flot.stack',
-      'flot.pie',
-      'gauge',
-      'jquery-spinner',
-      'jquery-steps',
-      'jquery.sparkline',
-      'jquery.slimscroll',
+      'jquery-plugins',
       'kendo-ui-core',
-      'morris',
-      'seiyria-bootstrap-slider',
-      'textAngularSetup',
-      'textAngular',
+      'textAngular.min',
       'textAngular-sanitize',
-      'toastr',
-      'underscore',
+      'xtk',
 
       './config',
 
@@ -52,7 +39,8 @@ define([
       './Chart/ChartDirective',
 
       './HelloWorld/HelloWorldCtrl',
-    './StemCells/StemCellsCtrl'
+      './HelloWorld/HelloWorldService',
+      './xtkDemo/xtkDirective'
 
     ], function (ng) {
       'use strict';
@@ -65,7 +53,6 @@ define([
           'easypiechart',
           'mgo-angular-wizard',
           'textAngular',
-          'textAngularSetup',
           'angular-loading-bar',
           'app.ui.ctrls',
           'app.ui.directives',
@@ -80,8 +67,10 @@ define([
           'app.localization',
           'app.chart.ctrls',
           'app.chart.directives',
+          'app.helloworld.services',
           'app.helloworld.ctrls',
-          'app.constants',
-          'app.StemCells.ctrls'
+          'app.xtk.directives',
+
+          'app.constants'
       ]);
 });

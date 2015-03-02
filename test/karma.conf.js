@@ -14,8 +14,7 @@ module.exports = function (config) {
       dir: 'test/coverage'
     },
     preprocessors: {  // files checked for code coverage with karma-coverage
-      'ui/js/controllers/*.js': ['coverage'],
-      'ui/js/services/*.js': ['coverage']
+      'ui/js/!(bower_components)/**/*.js': ['coverage']
     },
     exclude: [],
     port: 8080,
