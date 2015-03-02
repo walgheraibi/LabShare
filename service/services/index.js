@@ -5,7 +5,7 @@ var cors = require('cors');
 var app = express();
 var helloService = require('./helloworld');
 var userService = require('./Users');
-var stemService = require('.stemcells2');
+var stemService = require('./stemcells2');
 
 app.use(cors());
 app.use(bodyParser.json());
