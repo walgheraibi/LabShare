@@ -4,25 +4,25 @@
 
 define(['angular'], function (angular) {
     'use strict';
-    return angular.module('app.StemCells.ctrls', []).factory('taskStorage', function() {
+    return angular.module('app.StemCells.ctrls', []).factory('taskStorage', function () {
         var DEMO_TASKS, STORAGE_ID;
         STORAGE_ID = 'tasks';
         DEMO_TASKS = '[ {"title": "Finish homework", "completed": true}, {"title": "Make a call", "completed": true}, {"title": "Play games with friends", "completed": false}, {"title": "Shopping", "completed": false}, {"title": "One more dance", "completed": false}, {"title": "Try Google glass", "completed": false} ]';
         return {
-            get: function() {
+            get: function () {
                 return JSON.parse(localStorage.getItem(STORAGE_ID) || DEMO_TASKS);
             },
-            put: function(tasks) {
+            put: function (tasks) {
                 return localStorage.setItem(STORAGE_ID, JSON.stringify(tasks));
             }
         };
     }).directive('taskFocus', [
-        '$timeout', function($timeout) {
+        '$timeout', function ($timeout) {
             return {
-                link: function(scope, ele, attrs) {
-                    return scope.$watch(attrs.taskFocus, function(newVal) {
+                link: function (scope, ele, attrs) {
+                    return scope.$watch(attrs.taskFocus, function (newVal) {
                         if (newVal) {
-                            return $timeout(function() {
+                            return $timeout(function () {
                                 return ele[0].focus();
                             }, 0, false);
                         }
@@ -31,11 +31,11 @@ define(['angular'], function (angular) {
             };
         }
     ]).controller('StemCellsCtrl', [
-        '$scope',  'taskStorage', 'filterFilter', '$rootScope', 'logger', function($scope, taskStorage, filterFilter, $rootScope, logge) {
+        '$scope', 'taskStorage', 'filterFilter', '$rootScope', 'logger', function ($scope, taskStorage, filterFilter, $rootScope, logge) {
 
-            $scope.showContent = function($fileContent) {
+            $scope.showContent = function ($fileContent) {
                 $scope.content = $fileContent;
-            }
+            };
 
             var tasks;
             tasks = $scope.tasks = taskStorage.get();
@@ -47,7 +47,7 @@ define(['angular'], function (angular) {
             $scope.statusFilter = {
                 completed: false
             };
-            $scope.filter = function(filter) {
+            $scope.filter = function (filter) {
                 switch (filter) {
                     case 'all':
                         return $scope.statusFilter = '';
@@ -61,7 +61,7 @@ define(['angular'], function (angular) {
                         };
                 }
             };
-            $scope.add = function() {
+            $scope.add = function () {
                 var newTask;
                 newTask = $scope.newTask.trim();
                 if (newTask.length === 0) {
@@ -76,10 +76,10 @@ define(['angular'], function (angular) {
                 $scope.newTask = '';
                 return $scope.remainingCount++;
             };
-            $scope.edit = function(task) {
+            $scope.edit = function (task) {
                 return $scope.editedTask = task;
             };
-            $scope.doneEditing = function(task) {
+            $scope.doneEditing = function (task) {
                 $scope.editedTask = null;
                 task.title = task.title.trim();
                 if (!task.title) {
@@ -89,7 +89,7 @@ define(['angular'], function (angular) {
                 }
                 return taskStorage.put(tasks);
             };
-            $scope.remove = function(task) {
+            $scope.remove = function (task) {
                 var index;
                 $scope.remainingCount -= task.completed ? 0 : 1;
                 index = $scope.tasks.indexOf(task);
@@ -97,7 +97,7 @@ define(['angular'], function (angular) {
                 taskStorage.put(tasks);
                 return logger.logError('Task removed');
             };
-            $scope.completed = function(task) {
+            $scope.completed = function (task) {
                 $scope.remainingCount += task.completed ? -1 : 1;
                 taskStorage.put(tasks);
                 if (task.completed) {
@@ -112,14 +112,14 @@ define(['angular'], function (angular) {
                     }
                 }
             };
-            $scope.clearCompleted = function() {
-                $scope.tasks = tasks = tasks.filter(function(val) {
+            $scope.clearCompleted = function () {
+                $scope.tasks = tasks = tasks.filter(function (val) {
                     return !val.completed;
                 });
                 return taskStorage.put(tasks);
             };
-            $scope.markAll = function(completed) {
-                tasks.forEach(function(task) {
+            $scope.markAll = function (completed) {
+                tasks.forEach(function (task) {
                     return task.completed = completed;
                 });
                 $scope.remainingCount = completed ? 0 : tasks.length;
@@ -128,10 +128,10 @@ define(['angular'], function (angular) {
                     return logger.logSuccess('Congrats! All done :)');
                 }
             };
-            $scope.$watch('remainingCount == 0', function(val) {
+            $scope.$watch('remainingCount == 0', function (val) {
                 return $scope.allChecked = val;
             });
-            return $scope.$watch('remainingCount', function(newVal, oldVal) {
+            return $scope.$watch('remainingCount', function (newVal, oldVal) {
                 return $rootScope.$broadcast('taskRemaining:changed', newVal);
             });
 
@@ -156,19 +156,27 @@ define(['angular'], function (angular) {
             }
         }
     }).controller('stemCtrl', [
-        '$scope', function($scope) {
-            var user = LabUser({userName:'Weaam'});
+        '$scope', function ($scope) {
+            var user = LabUser({userName: 'Weaam'});
             $scope.cells = 'Hi ' + user.userName;
         }
-    ]).controller('stemCtrlService', function($scope, helloWorldService) {
-
-        helloWorldService.hello("http://0.0.0.0:9090", "You").then(
-                    function(response) {
-                        $scope.message = response.message;
-                    },
-                    function(errorMessage) {
-                        $scope.message = "ErrorStemService";
-                    }
-                );
+    ]).controller('helloCtrlService', function ($scope, helloWorldService) {
+        helloWorldService.hello("http://0.0.0.0:9090", "James").then(
+            function (response) {
+                $scope.message = response.message;
+            },
+            function (errorMessage) {
+                $scope.message = "Error Hello Service";
+            }
+        );
+    }).controller('SampleListCtrl', ['$scope', '$http',
+        function ($scope, $http) {
+            $http.get('samples/sample.json').success(function(data) {
+                $scope.samples2 = data;
             });
+        }]).controller('SampleListCtrl2', ['$scope', 'SampleListService',
+        function ($scope, SampleListService) {
+            $scope.samples = SampleListService.query();
+            }
+        ]);
 });

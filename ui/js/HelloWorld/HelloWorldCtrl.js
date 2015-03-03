@@ -12,7 +12,7 @@ define(['angular', 'lsModels'], function (angular) {
                 $scope.message = response.message;
             },
             function(errorMessage) {
-                $scope.message = "ErrorHelloService";
+                $scope.message = errorMessage;
             }
         );
     });
