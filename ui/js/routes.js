@@ -37,6 +37,8 @@ define(['./app'], function (app) {
                 templateUrl: 'ui/views/forms/wizard.html'
             }).when('/tables/static', {
                 templateUrl: 'ui/views/tables/static.html'
+            }).when('/tables/fun', {
+                templateUrl: 'ui/views/tables/fun.html'
             }).when('/tables/responsive', {
                 templateUrl: 'ui/views/tables/responsive.html'
             }).when('/tables/dynamic', {
@@ -75,15 +77,17 @@ define(['./app'], function (app) {
                 templateUrl: 'ui/views/tasks/tasks.html'
             }).when('/hello', {
                 templateUrl: 'ui/views/helloworld/helloworld.html'
-            }).when('/xtk', {
-                templateUrl: 'ui/views/xtk/xtk.html'
-            }).when('/StemCells/MedicalCenter', {
-                templateUrl: 'ui/views/StemCells/MedicalCenter.html'
-            }).when('/StemCells/ResearchCenter', {
-                templateUrl: 'ui/views/StemCells/ResearchCenter.html'
-            }).when('/StemCells/OSCTR', {
-                templateUrl: 'ui/views/StemCells/OSCTR.html'
-            }).otherwise({
+            }).when('/Assay/Mai', {
+                templateUrl: 'ui/views/Assay/Mai.html'
+            }).when('/Assay/AssayScheduler', {
+                templateUrl: 'ui/views/Assay/AssayScheduler.html'
+            }).when('/NEI/MedicalCenter', {
+        templateUrl: 'ui/views/NEI/MedicalCenter.html'
+    }).when('/NEI/ResearchCenter', {
+        templateUrl: 'ui/views/NEI/ResearchCenter.html'
+    }).when('/NEI/OSCTR', {
+        templateUrl: 'ui/views/NEI/OSCTR.html'
+    }).otherwise({
                 redirectTo: '/404'
             });
         }

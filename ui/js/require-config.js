@@ -48,7 +48,6 @@ requirejs.config({
         'jquery.easy-pie-chart': 'bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart',
         'jquery.slimscroll': 'bower_components/jquery.slimscroll/jquery.slimscroll.min',
         'jquery.sparkline': 'vendors/jquery.sparkline.min',
-        'jquery-plugins': 'jquery-plugins',
         json: 'bower_components/requirejs-plugins/src/json',
         'kendo-ui-core': 'bower_components/kendo-ui-core/js/kendo.ui.core.min',
         mdown: 'bower_components/requirejs-plugins/src/mdown',
@@ -64,20 +63,13 @@ requirejs.config({
         text: 'bower_components/requirejs-plugins/lib/text',
         textAngular: 'bower_components/textAngular/src/textAngular',
         'textAngular-sanitize': 'bower_components/textAngular/src/textAngular-sanitize',
-        'textAngular.min': 'bower_components/textAngular/dist/textAngular.min',
-        'textAngular-rangy': 'bower_components/textAngular/dist/textAngular-rangy.min',
+        textAngularSetup: 'bower_components/textAngular/src/textAngularSetup',
         toastr: 'bower_components/toastr/toastr',
         underscore: 'bower_components/underscore/underscore',
-        'jquery.bootstrap': 'jquery.bootstrap',
-        xtk: 'vendors/xtk',
-        lsModels: './lsModels',
-        textAngularSetup: 'bower_components/textAngular/src/textAngularSetup'
+        'jquery.bootstrap': 'jquery.bootstrap'
     },
     shim: {
         angular: {
-            deps: [
-                'jquery'
-            ],
             exports: 'angular'
         },
         'angular-route': [
@@ -101,6 +93,12 @@ requirejs.config({
         'angular-sanitize': [
             'angular'
         ],
+        'bootstrap-file-input': {
+            deps: [
+                'jquery'
+            ],
+            exports: 'jQuery.fn.bootstrapFileInput'
+        },
         flot: {
             deps: [
                 'jquery'
@@ -119,15 +117,21 @@ requirejs.config({
         'flot.stack': [
             'flot'
         ],
-        'flot.tooltip': [
-            'flot'
-        ],
         morris: {
             deps: [
                 'jquery'
             ],
             exports: 'Morris'
         },
+        textAngular: [
+            'angular'
+        ],
+        textAngularSetup: [
+            'angular'
+        ],
+        'textAngular-sanitize': [
+            'angular'
+        ],
         bootstrap: {
             deps: [
                 'jquery'
@@ -139,7 +143,25 @@ requirejs.config({
         'jquery.beta': [
             'jquery'
         ],
-        'jquery-plugins': [
+        'jquery.easy-pie-chart': [
+            'jquery'
+        ],
+        'jquery.sparkline': [
+            'jquery'
+        ],
+        'jquery.slimscroll': {
+            deps: [
+                'jquery'
+            ],
+            exports: 'jQuery.fn.slimscroll'
+        },
+        'jquery-steps': {
+            deps: [
+                'jquery'
+            ],
+            exports: 'jQuery.fn.steps'
+        },
+        'jquery-spinner': [
             'jquery'
         ],
         'kendo-ui-core': {
@@ -148,31 +170,9 @@ requirejs.config({
                 'angular'
             ]
         },
-        'textAngular-sanitize': {
-            deps: [
-                'angular',
-                'angular-sanitize'
-            ]
-        },
-        'textAngular.min': {
-            deps: [
-                'angular',
-                'textAngular-rangy',
-                'textAngular-sanitize'
-            ]
-        },
         underscore: {
             exports: '_'
-        },
-        lsModels: {
-            exports: 'lsModels'
-        },
-        xtk: {
-            exports: 'X'
-        },
-        packages: [
-
-        ]
+        }
     },
     packages: [
 

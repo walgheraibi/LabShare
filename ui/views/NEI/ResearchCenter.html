@@ -1,0 +1,43 @@
+<div class="page"  data-ng-controller="NEIListCtrl">
+
+    <section class="panel panel-default">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Research Center </strong></div>
+
+
+        <ul class="samples2" > <p>Sample List</p>
+
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th><div class="th">
+                        Sample ID
+                    </div></th>
+                    <th><div class="th">
+                        Patient age
+                    </div></th>
+                    <th><div class="th">
+                        Genetic
+                    </div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat=" sample in samples">
+                    <td>{{sample.id}}</td>
+                    <td>{{sample.age}}</td>
+                    <td>{{sample.genetic}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+</ul>
+
+</section>
+
+<section class="panel panel-default">
+
+              <ul class="samples2" data-ng-controller="SampleListCtrl2"> <p>API JSON file</p>
+                  <pre>{{ driversList }}</pre>
+
+        </ul>
+    </section>
+</div>

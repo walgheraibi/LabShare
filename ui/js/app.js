@@ -4,17 +4,30 @@
  */
 define([
       'angular',
+      'jquery',
       'angular-route',
       'angular-bootstrap',
       'angular-animate',
       'angular-loading-bar',
       'angular.easy-pie-chart',
       'angular-wizard',
-      'jquery-plugins',
+      'flot.time',
+      'flot.resize',
+      'flot.stack',
+      'flot.pie',
+      'gauge',
+      'jquery-spinner',
+      'jquery-steps',
+      'jquery.sparkline',
+      'jquery.slimscroll',
       'kendo-ui-core',
-      'textAngular.min',
+      'morris',
+      'seiyria-bootstrap-slider',
+      'textAngularSetup',
+      'textAngular',
       'textAngular-sanitize',
-      'xtk',
+      'toastr',
+      'underscore',
 
       './config',
 
@@ -39,13 +52,12 @@ define([
       './Chart/ChartDirective',
 
       './HelloWorld/HelloWorldCtrl',
-      './HelloWorld/HelloWorldService',
-      './xtkDemo/xtkDirective',
-    './StemCells/StemCellsCtrl',
-    './StemCells/StemCellsService'
+    './NEI/NEIListCtrl',
+    './NEI/NEIService'
 
 
-], function (ng) {
+
+    ], function (ng) {
       'use strict';
       return ng.module('lsseedApp', [
           'ngRoute',
@@ -56,6 +68,7 @@ define([
           'easypiechart',
           'mgo-angular-wizard',
           'textAngular',
+          'textAngularSetup',
           'angular-loading-bar',
           'app.ui.ctrls',
           'app.ui.directives',
@@ -70,11 +83,8 @@ define([
           'app.localization',
           'app.chart.ctrls',
           'app.chart.directives',
-          'app.helloworld.services',
           'app.helloworld.ctrls',
-          'app.xtk.directives',
           'app.StemCells.services',
-          'app.StemCells.ctrls',
-          'app.constants'
+          'NEIApp'
       ]);
 });
